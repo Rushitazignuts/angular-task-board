@@ -1,0 +1,28 @@
+<mat-card class="mb-3 shadow-sm task-card">
+    <div class="d-flex justify-content-between align-items-start flex-md-nowrap flex-wrap p-2">
+
+        <!-- LEFT: Title + Description -->
+        <div class="task-content">
+            <div class="fw-semibold text-break">
+                {{ task.title }}
+            </div>
+
+            <div class="text-muted task-desc" [title]="task.description">
+                {{ task.description }}
+            </div>
+        </div>
+
+        <!-- RIGHT: Action Buttons (NO WRAP) -->
+        <div class="task-actions">
+            <button mat-mini-fab color="primary" aria-label="Edit" (click)="edit.emit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-mini-fab color="warn" aria-label="Delete" (click)="requestDelete.emit()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+    </div>
+
+</mat-card>

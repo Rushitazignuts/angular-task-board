@@ -1,0 +1,10 @@
+<div class="task-column">
+    <h2 class="task-column-title">{{ title }}</h2>
+
+    <div cdkDropList [id]="title.toLowerCase().replaceAll(' ', '')" [cdkDropListData]="tasks"
+        [cdkDropListConnectedTo]="connectedTo" (cdkDropListDropped)="onDrop($event)" class="task-list">
+        <div *ngFor="let task of tasks; trackBy: trackByTaskId" cdkDrag [cdkDragData]="task">
+            <app-task-item [task]="task" (delete)="deleteTask(task.id)"></app-task-item>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+        <mat-form-field appearance="outline" class="search-tasks-field">
+            <input matInput [(ngModel)]="searchTerm" placeholder="Search tasks" />
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <button matButton="filled" color="primary" (click)="openDialog('add')">
+            <mat-icon>add</mat-icon> Add task
+        </button>
+    </div>
+
+    <!-- KANBAN BOARD -->
+    <div class="kanban-board">
+
+        <!-- TO-DO -->
+        <mat-card class="column-card" cdkDropList [cdkDropListData]="todoTasks"
+            [cdkDropListConnectedTo]="['inProgressList','doneList']" (cdkDropListDropped)="drop($event)" id="todoList">
+            <div class="column-header">
+                <mat-icon color="primary">list_alt</mat-icon> To-Do
+            </div>
+            <app-task-list [tasks]="todoTasks" [editTask]="editTask" [confirmDelete]="deleteTask" listId="todoList">
+            </app-task-list>
+        </mat-card>
+
+        <!-- IN PROGRESS -->
+        <mat-card class="column-card" cdkDropList [cdkDropListData]="inProgressTasks"
+            [cdkDropListConnectedTo]="['todoList','doneList']" (cdkDropListDropped)="drop($event)" id="inProgressList">
+            <div class="column-header">
+                <mat-icon color="accent">autorenew</mat-icon> In Progress
+            </div>
+            <app-task-list [tasks]="inProgressTasks" [editTask]="editTask" [confirmDelete]="deleteTask"
+                listId="inProgressList">
+            </app-task-list>
+        </mat-card>
+
+        <!-- DONE -->
+        <mat-card class="column-card" cdkDropList [cdkDropListData]="doneTasks"
+            [cdkDropListConnectedTo]="['todoList','inProgressList']" (cdkDropListDropped)="drop($event)" id="doneList">
+            <div class="column-header">
+                <mat-icon color="warn">check_circle</mat-icon> Completed
+            </div>
+            <app-task-list [tasks]="doneTasks" [editTask]="editTask" [confirmDelete]="deleteTask" listId="doneList">
+            </app-task-list>
+        </mat-card>
+
+    </div>
+</div>

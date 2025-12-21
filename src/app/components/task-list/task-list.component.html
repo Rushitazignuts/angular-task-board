@@ -1,0 +1,10 @@
+<div>
+    <ng-container *ngFor="let task of tasks; trackBy: trackById">
+        <div cdkDrag [cdkDragData]="task">
+            <app-task-item [task]="task" (edit)="editTask(task)"
+                (requestDelete)="confirmDelete(task.id)"></app-task-item>
+        </div>
+    </ng-container>
+
+    <p *ngIf="tasks.length === 0">No tasks found</p>
+</div>

@@ -1,0 +1,29 @@
+<h3 mat-dialog-title class="dialog-title mx-3 mt-3">
+    {{ data.mode === 'add' ? 'Add task' : 'Edit task' }}
+</h3>
+
+<form #taskForm="ngForm">
+    <mat-dialog-content>
+
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <input matInput required placeholder="Enter task title" [(ngModel)]="taskTitle" name="title"
+                #titleModel="ngModel" />
+            <mat-error *ngIf="titleModel.invalid && (titleModel.touched || submitted)">
+                Task title is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+            <textarea matInput placeholder="Enter task description" [(ngModel)]="taskDescription"
+                name="description"></textarea>
+        </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button (click)="close()">Cancel</button>
+        <button mat-flat-button color="primary" (click)="save(taskForm)">
+            {{ data.mode === 'add' ? 'Add' : 'Update' }}
+        </button>
+    </mat-dialog-actions>
+</form>
