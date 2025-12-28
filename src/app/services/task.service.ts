@@ -26,7 +26,7 @@ export class TaskService {
       id: Date.now(), 
       title, 
       description,
-      status: 'todo'   // NEW 
+      status: 'todo' 
     };
     this.tasks.update(list => [...list, newTask]);
     this.save();

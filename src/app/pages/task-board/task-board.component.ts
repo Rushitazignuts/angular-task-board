@@ -52,7 +52,6 @@ export class TaskBoardComponent {
     const task: Task = event.item.data;
 
     if (event.previousContainer === event.container) {
-      // just reorder inside the same list
       event.previousContainer.data.splice(event.previousIndex, 1);
       event.previousContainer.data.splice(event.currentIndex, 0, task);
     } else {

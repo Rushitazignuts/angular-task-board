@@ -5,12 +5,14 @@
 <form #taskForm="ngForm">
     <mat-dialog-content>
 
-        <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-form-field appearance="outline" class="w-100 mb-3 validation-msg">
             <input matInput required placeholder="Enter task title" [(ngModel)]="taskTitle" name="title"
                 #titleModel="ngModel" />
-            <mat-error *ngIf="titleModel.invalid && (titleModel.touched || submitted)">
+             @if (titleModel.invalid && (titleModel.touched || submitted)) {
+                <mat-error>
                 Task title is required
-            </mat-error>
+                </mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">

@@ -6,5 +6,7 @@
         </div>
     </ng-container>
 
-    <p *ngIf="tasks.length === 0">No tasks found</p>
+@if (tasks.length === 0) {
+    <p>No tasks found</p>
+  }
 </div>
